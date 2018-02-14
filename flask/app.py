@@ -7,7 +7,7 @@ to split python stuff into python and html into html, make a /templates folder
 and make a file called home.html
 """
 
-from flask import Flask
+from flask import Flask, render_template, request
 
 # instantiate a Flask app class
 app = Flask(__name__)
@@ -28,7 +28,20 @@ def homepage():
 @app.route("/test/")
 def homepage_2():
     print("navigated to the address /test/!")
-    return 'ooh you know my secret!'
+    return """
+    <h1> input test </h1>
+    <form method='POST'>
+        <input name='text'>
+        <input type='submit'>
+    </form>
+    """
+
+@app.route("/test/", methods=["POST"])
+def homepage2_post():
+    print("POST")
+    text = request.form['text']
+    process_text = '|'.join([text,text,text])
+    return process_text
 
 @app.route("/pretty/")
 def tutorial_page():
@@ -50,4 +63,4 @@ def tutorial_page():
     """
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)

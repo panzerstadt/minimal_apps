@@ -105,113 +105,116 @@ def travis_web():
             check_for_retry = request.form['retry']
             print('retry found!', check_for_retry)
             if 'reset' in check_for_retry:
+                travis.r_customer_check = False
+                travis.n_customer_check = False
                 return default_response()
         except:
             pass
 
         print(request.form)
         check_for_inputs = request.form['text']
-        check_for_inputs = check_for_inputs.split(' ')
+        #check_for_inputs = check_for_inputs.split(' ')
         print(check_for_inputs)
 
 
 
         result = check_for_inputs  # no reason, just nice to change names sometimes
+
         if travis.r_customer_check == False and travis.n_customer_check == False:
-            for input_name in result:
-                if input_name in namelist:
-                    returning_customer = input_name
-                    name_counter += 1
-                    travis.r_customer_check = True
-                    html_out = render_template_mini("""
-                            <div>
-                                <h1>welcome back, {0}!</h1>
-                                <h2>do you want to delete your name from the list?</h2>
-                                <form method='POST'>
-                                    <input type="text" name="text">
-                                    <button type="submit">Submit</button>
-                                </form> 
-                            </div>
-                            """.format(returning_customer))
-                    return html_out
-                else:
-                    new_customer = input_name
-                    travis.n_customer_check = True
-                    html_out = render_template_mini("""
-                            <div>
-                                <h1>hmm...</h1>
-                                <h2>you are not on the list, {0}.</h2>
-                                <h2>do you want me to add you to the list?</h2>
-                                <form method='POST'>
-                                    <input type="text" name="text">
-                                    <button type="submit">Submit</button>
-                                </form>
-                            </div> 
-                            """.format(new_customer))
-                    return html_out
+            if result in namelist:
+                returning_customer = result
+                name_counter += 1
+                travis.r_customer_check = True
+                html_out = render_template_mini("""
+                        <div>
+                            <h1>welcome back, {0}!</h1>
+                            <h2>do you want to delete your name from the list?</h2>
+                            <form method='POST'>
+                                <input type="text" name="text">
+                                <button type="submit">Submit</button>
+                            </form> 
+                        </div>
+                        """.format(returning_customer))
+                return html_out
+            else:
+                new_customer = result
+                travis.n_customer_check = True
+                html_out = render_template_mini("""
+                        <div>
+                            <h1>hmm...</h1>
+                            <h2>you are not on the list, {0}.</h2>
+                            <h2>do you want me to add you to the list?</h2>
+                            <form method='POST'>
+                                <input type="text" name="text">
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div> 
+                        """.format(new_customer))
+                return html_out
 
-        for received_input in check_for_inputs:
-            if travis.r_customer_check:
-                travis.r_customer_check = False # reset checking token
-                if received_input.lower() == 'yes':
-                    # delete customer from namelist
-                    if returning_customer in namelist:
-                        namelist.remove(returning_customer)
-                    html_out = render_template_mini("""
-                    <div>
-                        <h2>sad to see you go man/woman/squirrel.</h2>
-                        <p>vaunted list of members:</p>
-                        <ul>{0}</ul>
-                        <p style='color:grey'>you are a squirrel are you not?</p>
-                        <form method="POST">
-                            <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
-                        </form>
-                    </div>
-                    """.format(format_list_html(namelist)))
-                    return html_out
-                else:
-                    html_out = render_template_mini("""
-                    <div>
-                        <h2 style='color: rgb(200,200,200)'>phew... felt like i just dodged a bullet.</h2>
-                        <p>vaunted list of members:</p>
-                        <ul>{0}</ul>
-                        <form method="POST">
-                            <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
-                        </form>
-                    </div>
-                    """.format(format_list_html(namelist)))
-                    return html_out
-
-            if travis.n_customer_check:
-                travis.n_customer_check = False # reset checking token
-                if received_input.lower() == 'yes':
-                    namelist.append(new_customer)
-                    html_out = render_template_mini("""
-                    <div>
-                    <h2>ok, welcome to the family!</h2>
+        if travis.r_customer_check:
+            travis.r_customer_check = False # reset checking token
+            if result.lower() == 'yes':
+                # delete customer from namelist
+                if returning_customer in namelist:
+                    namelist.remove(returning_customer)
+                html_out = render_template_mini("""
+                <div>
+                    <h2>sad to see you go man/woman/squirrel.</h2>
+                    <p>vaunted list of members:</p>
+                    <ul>{0}</ul>
+                    <p style='color:grey'>you are a squirrel are you not?</p>
+                    <form method="POST">
+                        <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
+                    </form>
+                </div>
+                """.format(format_list_html(namelist)))
+                return html_out
+            else:
+                html_out = render_template_mini("""
+                <div>
+                    <h2 style='color: rgb(200,200,200)'>phew... felt like i just dodged a bullet.</h2>
                     <p>vaunted list of members:</p>
                     <ul>{0}</ul>
                     <form method="POST">
                         <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
                     </form>
-                    </div>
-                    """.format(format_list_html(namelist)))
-                    return html_out
-                else:
-                    html_out = render_template_mini("""
-                    <div>
-                    <h2>boo boo! go find someone else to be your family!</h2>
-                    <p>vaunted list of members:</p>
-                    <ul>{0}</ul>
-                    <form method="POST">
-                        <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
-                    </form>
-                    </div>
-                    """.format(format_list_html(namelist)))
-                    return html_out
+                </div>
+                """.format(format_list_html(namelist)))
+                return html_out
+
+        if travis.n_customer_check:
+            travis.n_customer_check = False # reset checking token
+            if result.lower() == 'yes':
+                namelist.append(new_customer)
+                html_out = render_template_mini("""
+                <div>
+                <h2>ok, welcome to the family!</h2>
+                <p>vaunted list of members:</p>
+                <ul>{0}</ul>
+                <form method="POST">
+                    <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
+                </form>
+                </div>
+                """.format(format_list_html(namelist)))
+                return html_out
+            else:
+                html_out = render_template_mini("""
+                <div>
+                <h2>boo boo! go find someone else to be your family!</h2>
+                <p>vaunted list of members:</p>
+                <ul>{0}</ul>
+                <form method="POST">
+                    <button name="retry" value="reset" type="submit" class="btn btn-warning">retry</button>
+                </form>
+                </div>
+                """.format(format_list_html(namelist)))
+                return html_out
 
     # do this when first loading the page (when there is no POST input from the html
     else:
+        travis.r_customer_check = False
+        travis.n_customer_check = False
         return default_response()
 
 
@@ -253,4 +256,4 @@ def travis_local():
 
 # make the program run
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run()

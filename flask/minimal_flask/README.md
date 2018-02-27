@@ -36,3 +36,4 @@ notes:
     - pip freeze > requirements.txt
 - further reading for Procfile : https://devcenter.heroku.com/articles/process-model
 - simple taking and processing of input: https://stackoverflow.com/questions/12277933/send-data-from-a-textbox-into-flask
+- something to watch for when pushing to heroku: os.walk returns more things as heroku has other files in use

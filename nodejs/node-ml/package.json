@@ -1,0 +1,29 @@
+{
+  "name": "nodeml",
+  "version": "1.0.0",
+  "description": "nn trained on whether to make black or white text according to input colour",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panzerstadt/node-ml.git"
+  },
+  "keywords": [
+    "nodejs",
+    "brainjs",
+    "ml",
+    "nn"
+  ],
+  "author": "panzerstadt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panzerstadt/node-ml/issues"
+  },
+  "homepage": "https://github.com/panzerstadt/node-ml#readme",
+  "dependencies": {
+    "brain.js": "^1.1.2",
+    "node-static": "^0.7.10"
+  }
+}

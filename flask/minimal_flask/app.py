@@ -8,59 +8,113 @@ and make a file called home.html
 """
 
 from flask import Flask, render_template, request
+import json
+
+# dummy input GET
+test_input = 'localhost:8000/?content=明日、4月26日（木）のアニメ「ポケットモンスター サン＆ムーン」は1時間スペシャル！ アニメ豪華2本立てのほか、今夏公開の「劇場版ポケットモンスター みんなの物語」に出演する豪華キャストからのスペシャルメッセージも！ お楽しみに！&timestamp=2018-04-25 22:30:10'
+
+# dummy input POST
+test_input = {
+    'content': '明日、4月26日（木）のアニメ「ポケットモンスター サン＆ムーン」は1時間スペシャル！ アニメ豪華2本立てのほか、今夏公開の「劇場版ポケットモンスター みんなの物語」に出演する豪華キャストからのスペシャルメッセージも！ お楽しみに！',
+    'timestamp': '2018-04-25 22:30:10'
+}
+
+# dummy output
+test_json = {
+        'results': [
+            {
+                'context': '60%',
+                'hashtags': [
+                    '#pokemon',
+                    '#ポケモン',
+                    '#pokemon_go',
+                    '#matome'
+                ],
+                'content': [
+                    '限定',
+                    'オンライン限定',
+                    'ポケットモンスター サン&ムーン',
+                    'キャスト',
+                    'プレミアムフレーム切手セット',
+                    'セット',
+                    '記念切手',
+                    'ポケモンセンター',
+                    '劇場版ポケットモンスター みんなの物語'
+                ],
+                'time': [
+                    '1900',
+                    '1250',
+                    '1350',
+                    '1600']
+            }],
+        'status': 'success'
+    }
 
 # instantiate a Flask app class
 app = Flask(__name__)
 print("app initiated. name of app is: ", __name__)
 
-@app.route("/")
+
+def prediction_repr():
+    pass
+
+
+def pretty_error(error_text):
+    return render_template('error.html', content=error_text), 400
+
+
+# TODO: authentication for predictive twitter
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if valid_login(request.form['username'],
+                       request.form['password']):
+            return log_the_user_in(request.form['username'])
+        else:
+            error = 'Invalid username/password'
+    # the code below is executed if the request method
+    # was GET or the credentials were invalid
+    return render_template('login.html', error=error)
+
+
+@app.route("/", methods=["GET", "POST"])
 def homepage():
-    print("the print function in python sends stuff into the console!")
-    print('like now! hello! running the homepage function!')
-    # do the html stuff in here, and return it (or return the string, which flask will interpret as html
-    # or, actually, just link it to another html file that you prepare
-    # link to html file : https://pythonspot.com/flask-with-static-html-files/
-    # python + flask with html : http://pythonhow.com/add-css-to-flask-website/
+    # get gives you a MultiDict() of everything after the question mark
+    if request.method == "GET":
+        content = request.args.get('content')
+        timestamp = request.args.get('timestamp')
+
+        print(content)
+        print(timestamp)
+
+        # dummy return
+        if content and timestamp:
+            # process stuff here
+            return json.dumps(test_json)
+        else:
+            content = "Error 400: got some problem with your GET inputs. them's not getting in."
+            return pretty_error(content)
+
+    # dummy for now
+    if request.method == "POST":
+        data = request.form
+        content = data['content']
+        timestamp = data['timestamp']
+
+        # dummy return
+        if content and timestamp:
+            # process stuff here
+            return json.dumps(test_json)
+        else:
+            content = "Error 400: got some problem with your GET inputs. them's not getting in."
+            return pretty_error(content)
+
     return """Hello
     <p>and</p>
-    Goodbye World"""
-
-@app.route("/test/")
-def homepage_2():
-    print("navigated to the address /test/!")
-    return """
-    <h1> input test </h1>
-    <form method='POST'>
-        <input name='text'>
-        <input type='submit'>
-    </form>
+    Goodbye World
     """
 
-@app.route("/test/", methods=["POST"])
-def homepage2_post():
-    print("POST")
-    text = request.form['text']
-    process_text = '|'.join([text,text,text])
-    return process_text
-
-@app.route("/pretty/")
-def tutorial_page():
-    print("returns the below string, run as html. from the tutorial: http://www.compjour.org/lessons/flask-single-page/serving-simple-html-response/")
-    return """
-        <!DOCTYPE html>
-    <head>
-       <title>My title</title>
-       <link rel="stylesheet" href="http://stash.compjour.org/assets/css/foundation.css">
-    </head>
-    <body style="width: 880px; margin: auto;">  
-        <h1>Visible stuff goes here</h1>
-        <p>here's a paragraph, fwiw</p>
-        <p>And here's an image:</p>
-        <a href="https://www.flickr.com/photos/zokuga/14615349406/">
-            <img src="http://stash.compjour.org/assets/images/sunset.jpg" alt="it's a nice sunset">
-        </a>
-    </body>
-    """
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 58: Eduardo C. Vela</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Eduardo C. Vela, a 33 year old,
+            Latino male died on 1992-04-29
+            in a homicide incident at 5100 block of West Slauson Avenue
+            
+                in Ladera Heights.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Eduardo C. Vela</h3>
+        <div>location (lat/lon) : -118.3687199, 33.9876036</div>
+        <div>date of incident : 1992-04-29</div>
+        <div>address : 5100 block of West Slauson Avenue</div>
+        <div>neighbourhood : Ladera Heights</div>
+        <div>cause of death : Homicide</div>
+        <div>Eduardo C. Vela, a 33-year-old Latino, was shot and killed Wednesday, April 29, 1992, in the 5100 block of West Slauson Avenue in Ladera Heights. Vela, a Mexican immigrant who ran a Japanese restaurant in Bakersfield, was visiting Los Angeles on the day the riots broke out. He was killed as he waited behind the steering wheel of his disabled car while a co-worker, Estevan Ortigoza, went to make a telephone call.</div>
+        <div><a href="http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.9876036, -118.3687199], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.9876036, -118.3687199]).addTo(map);
+    </script>
+</body>
+</html>

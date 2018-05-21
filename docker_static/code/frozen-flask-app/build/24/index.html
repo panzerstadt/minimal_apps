@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 24: Jimmie Harris</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Jimmie Harris, a 38 year old,
+            Black male died on 1992-04-29
+            in a death incident at Avalon Boulevard &amp; Slauson Avenue
+            
+                in South Park.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Jimmie Harris</h3>
+        <div>location (lat/lon) : -118.2651995, 33.989245</div>
+        <div>date of incident : 1992-04-29</div>
+        <div>address : Avalon Boulevard &amp; Slauson Avenue</div>
+        <div>neighbourhood : South Park</div>
+        <div>cause of death : Death</div>
+        <div>Jimmie Harris, a 38-year-old black man, died Monday, May 4, 1992, at a local hospital. Harris was involved in a car accident April 29 at the intersection of Avalon Boulevard and Slauson Avenue in South Park.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.989245, -118.2651995], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.989245, -118.2651995]).addTo(map);
+    </script>
+</body>
+</html>

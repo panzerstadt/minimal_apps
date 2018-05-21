@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 5: Vivian Austin</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Vivian Austin, a 87 year old,
+            Black female died on 1992-05-03
+            in a death incident at 1600 W. 60th St.
+            
+                in Harvard Park.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Vivian Austin</h3>
+        <div>location (lat/lon) : -118.304741, 33.985667</div>
+        <div>date of incident : 1992-05-03</div>
+        <div>address : 1600 W. 60th St.</div>
+        <div>neighbourhood : Harvard Park</div>
+        <div>cause of death : Death</div>
+        <div>Vivian Austin, an 87-year-old black woman, died Sunday, May 3, 1992, in the 1600 block of West 60th Street. Austin suffered a fatal heart attack at her home in Harvard Park. Friends said she had been distraught by the rioting. &#34;This is considered a riot case because the stress from the riot was well documented and is a contributing factor in death from arteriosclerotic disease,&#34; the coroner&#39;s report says.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.985667, -118.304741], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.985667, -118.304741]).addTo(map);
+    </script>
+</body>
+</html>

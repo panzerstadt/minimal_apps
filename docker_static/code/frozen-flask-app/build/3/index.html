@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 3: Wilson Alvarez</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Wilson Alvarez, a 40 year old,
+            Latino male died on 1992-05-23
+            in a homicide incident at 3100 Rosecrans Ave.
+            
+                in Hawthorne.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Wilson Alvarez</h3>
+        <div>location (lat/lon) : -118.326816, 33.901662</div>
+        <div>date of incident : 1992-05-23</div>
+        <div>address : 3100 Rosecrans Ave.</div>
+        <div>neighbourhood : Hawthorne</div>
+        <div>cause of death : Homicide</div>
+        <div>Wilson Alvarez, a 40-year-old Latino, died of head injuries at County-USC Medical Center on May 23, 1992. According to authorities, Alvarez was assaulted while throwing rocks at looters Friday, May 1.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.901662, -118.326816], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.901662, -118.326816]).addTo(map);
+    </script>
+</body>
+</html>

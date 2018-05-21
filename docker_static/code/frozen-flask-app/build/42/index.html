@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 42: Charles W. Orebo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Charles W. Orebo, a 21 year old,
+            Black male died on 1992-05-01
+            in a officer involved shooting incident at Florence Avenue &amp; Flower Street
+            
+                in Florence.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Charles W. Orebo</h3>
+        <div>location (lat/lon) : -118.2812901, 33.9746575</div>
+        <div>date of incident : 1992-05-01</div>
+        <div>address : Florence Avenue &amp; Flower Street</div>
+        <div>neighbourhood : Florence</div>
+        <div>cause of death : Officer involved shooting</div>
+        <div>Charles Orebo, a 21-year-old black man, was shot and killed Friday, May 1, 1992, near the intersection of Florence Avenue and Flower Street in Florence. Charles &#34;Sticks&#34; Orebo and two friends, Andre Webb and Lavelle &#34;Frog&#34; Williams were driving toward a South Los Angeles house where Webb planned to spend the night. Near Florence Avenue and the 110 Freeway, Orebo tried to make a lane change, nearly cutting off a car behind him. The other driver honked and pulled alongside at a stoplight. Williams drew a handgun, loaded it and pointed it past Orebo toward the other driver, an LAPD officer who was out of uniform and en route to work. &#34;The guy looked at us,&#34; Webb said, &#34;and he jumped like he was in shock. Then he pulled up his gun. . . . Then he shot like three times and hit Sticks.&#34; Orebo, mortally wounded, punched the accelerator. The car lurched into a wall and caught fire. Orebo, a dropout and the father of a 4-year-old son, had planned to get married the next month and become an auto mechanic, said his mother, Georgia Alfred. He had been jailed a couple of times for traffic tickets and other small offenses, she said. &#34;But nothing violent. No guns or anything like that.&#34; Alfred said her son and Williams watched the verdicts in the King beating case together and were angry, &#34;but he wasn&#39;t going out beating anyone or carrying a gun.&#34; &#34;From what I gathered, my son didn&#39;t know [Williams] had the gun until he pulled it up,&#34; she said. &#34;I&#39;m angry, but I&#39;m angry with the young man.&#34;</div>
+        <div><a href="http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.9746575, -118.2812901], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.9746575, -118.2812901]).addTo(map);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 33: Lucie R. Maronian</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Lucie R. Maronian, a 51 year old,
+            White female died on 1992-05-01
+            in a homicide incident at 1800 block of East New York Drive
+            
+                in Altadena.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Lucie R. Maronian</h3>
+        <div>location (lat/lon) : -118.1134357, 34.1785051</div>
+        <div>date of incident : 1992-05-01</div>
+        <div>address : 1800 block of East New York Drive</div>
+        <div>neighbourhood : Altadena</div>
+        <div>cause of death : Homicide</div>
+        <div>Lucie Maronian, a 51-year-old white woman, was stabbed to death Friday, May 1, 1992, in the 1800 block of East New York Drive in Altadena. Maronian was found stabbed in her home. According to sheriff&#39;s investigators, she was killed after confronting a group of teenagers who had been chasing her 14-year-old son and his friend from a nearby intersection. In October 1994, two Altadena teenagers, previously accused of the murder of Maronian, were given five years&#39; probation on related charges. O&#39;Dell Whitley Jr., 19, and Leonard Hampton, 18, were sentenced in Pasadena Superior Court for commercial burglary of an Arcadia sporting goods store and attempted robbery of a pedestrian. The two originally were charged with a series of crimes that included the stabbing of Maronian. In April 1993, Whitley and Hampton were found guilty of the lesser crimes. But a mistrial was declared on the murder charge when only four of the 12 jurors voted for conviction. The district attorney decided not to retry the two for murder.</div>
+        <div><a href="http://articles.latimes.com/print/1994-10-06/local/me-47089_1_lesser-crimes">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.1785051, -118.1134357], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.1785051, -118.1134357]).addTo(map);
+    </script>
+</body>
+</html>

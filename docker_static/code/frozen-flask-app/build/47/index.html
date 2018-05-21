@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 47: Victor R. Rivas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Victor R. Rivas, a 26 year old,
+            Latino male died on 1992-05-03
+            in a officer involved shooting incident at Pico Boulevard &amp; Vermont Avenue
+            
+                in Pico-Union.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Victor R. Rivas</h3>
+        <div>location (lat/lon) : -118.291583, 34.0472563</div>
+        <div>date of incident : 1992-05-03</div>
+        <div>address : Pico Boulevard &amp; Vermont Avenue</div>
+        <div>neighbourhood : Pico-Union</div>
+        <div>cause of death : Officer involved shooting</div>
+        <div>Victor R. Rivas, a 26-year-old Latino, was shot and killed Sunday, May 3, 1992, in Pico-Union. Rivas was shot after he allegedly refused to stop his car at a barricade and tried several times to run a National Guardsman down at the intersection of Pico Boulevard and Vermont Avenue.</div>
+        <div><a href="http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.0472563, -118.291583], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.0472563, -118.291583]).addTo(map);
+    </script>
+</body>
+</html>

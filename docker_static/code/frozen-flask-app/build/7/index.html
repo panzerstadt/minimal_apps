@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 7: Carol Benson</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Carol Benson, a 42 year old,
+            Black female died on 1992-05-02
+            in a death incident at Harbor Freeway near Slauson Avenue
+            
+                in South Park.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Carol Benson</h3>
+        <div>location (lat/lon) : -118.2805037, 33.98916756</div>
+        <div>date of incident : 1992-05-02</div>
+        <div>address : Harbor Freeway near Slauson Avenue</div>
+        <div>neighbourhood : South Park</div>
+        <div>cause of death : Death</div>
+        <div>Carol Benson, a 42-year-old black woman, was struck on the 110 Freeway near Slauson Avenue in a hit-and-run accident on Saturday, May 2, 1992. Little is known about Benson, who was struck and dragged 180 feet. Authorities say she lived by herself in an apartment across from a small church in South Los Angeles. No relatives claimed her body, so her funeral was like those offered for all indigents: a cremation at County-USC Medical Center.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([33.98916756, -118.2805037], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([33.98916756, -118.2805037]).addTo(map);
+    </script>
+</body>
+</html>

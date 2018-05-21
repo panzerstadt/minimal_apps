@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 18: Jose L. Garcia</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Jose L. Garcia, a 15 year old,
+            Latino male died on 1992-04-30
+            in a not riot-related incident at 1005 S. Fresno St.
+            
+                in Boyle Heights.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Jose L. Garcia</h3>
+        <div>location (lat/lon) : -118.2070419, 34.0275527</div>
+        <div>date of incident : 1992-04-30</div>
+        <div>address : 1005 S. Fresno St.</div>
+        <div>neighbourhood : Boyle Heights</div>
+        <div>cause of death : Not riot-related</div>
+        <div>Jose L. Garcia, a 15-year-old Latino, was shot and killed Thursday, April 30, 1992, in the 1000 block of South Fresno Street in Boyle Heights. Garcia died from a gunshot wound to the chest, reportedly after a fight. His death may have been gang-related.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.0275527, -118.2070419], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.0275527, -118.2070419]).addTo(map);
+    </script>
+</body>
+</html>

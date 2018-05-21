@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 9: Hector Castro</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Hector Castro, a 49 year old,
+            Latino male died on 1992-04-30
+            in a homicide incident at Vermont &amp; Leeward avenues
+            
+                in Koreatown.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Hector Castro</h3>
+        <div>location (lat/lon) : -118.291654, 34.0587022</div>
+        <div>date of incident : 1992-04-30</div>
+        <div>address : Vermont &amp; Leeward avenues</div>
+        <div>neighbourhood : Koreatown</div>
+        <div>cause of death : Homicide</div>
+        <div>Hector Castro, a 49-year-old Latino, was shot and killed Thursday, April 30, 1992, in Koreatown. Castro was shot outside a block of retail shops at Vermont and Leeward avenues by an unknown gunman during a looting melee. The fatal bullet passed through the Central American immigrant&#39;s neck and was never found, authorities said. &#34;There were 150 to 300 people out there,&#34; said LAPD Det. Steven Sena. &#34;Not only were there Korean merchants shooting their weapons to scare off looters, but possible gang members and looters were shooting at the Koreans to get them out of the stores.&#34; &#34;It makes the case almost impossible&#34; to solve, Sena said.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.0587022, -118.291654], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.0587022, -118.291654]).addTo(map);
+    </script>
+</body>
+</html>

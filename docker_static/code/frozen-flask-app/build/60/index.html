@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 60: Louis A. Watson</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Louis A. Watson, a 18 year old,
+            Black male died on 1992-04-29
+            in a homicide incident at 4365 S. Vermont Ave.
+            
+                in Vermont Square.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Louis A. Watson</h3>
+        <div>location (lat/lon) : -118.2915566, 34.00524354</div>
+        <div>date of incident : 1992-04-29</div>
+        <div>address : 4365 S. Vermont Ave.</div>
+        <div>neighbourhood : Vermont Square</div>
+        <div>cause of death : Homicide</div>
+        <div>Louis A. Watson, an 18-year-old black man, was fatally shot Wednesday, April 29, 1992, in the 4300 block of South Vermont Avenue in Vermont Square. Struck by a single bullet to the head outside a swap meet, Watson was taken to a local hospital, where he died. Watson, the oldest of seven boys, lived with his mother, Sherry Ann Johnson, and his stepfather on West 43rd. Friends said Watson had toyed briefly with a gang, then rejected it. His friend, Drama, said Watson decided &#34;it wasn&#39;t worth it. He didn&#39;t want to die from gangbanging.&#34; So Watson went back to school and to playing the drums, playing football and running track. At Watson&#39;s funeral, 600 people, many of them teenagers, filled the church to capacity. The service began quietly, with testimony from friends and relatives. Then the grief and tension seemed to escalate to a point where the church was filled with the sound of weeping and wailing.</div>
+        <div><a href="http://articles.latimes.com/print/1992-05-07/news/mn-2526_1_young-men">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.00524354, -118.2915566], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.00524354, -118.2915566]).addTo(map);
+    </script>
+</body>
+</html>

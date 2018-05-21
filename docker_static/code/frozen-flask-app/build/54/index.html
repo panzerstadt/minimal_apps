@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 54: Dwight Taylor</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Dwight Taylor, a 42 year old,
+            Black male died on 1992-04-29
+            in a homicide incident at 4365 S. Vermont Ave.
+            
+                in Vermont Square.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Dwight Taylor</h3>
+        <div>location (lat/lon) : -118.292169, 34.004453</div>
+        <div>date of incident : 1992-04-29</div>
+        <div>address : 4365 S. Vermont Ave.</div>
+        <div>neighbourhood : Vermont Square</div>
+        <div>cause of death : Homicide</div>
+        <div>Dwight Taylor, a 42-year-old black man, was fatally shot Wednesday, April 29, 1992, in the 4300 block of South Vermont Avenue in Vermont Square. Taylor was taken to a local hospital, where he died. Taylor, a former Cal State Long Beach basketball player, still loved to show off his ball handling to youngsters on the courts around South Los Angeles. In recent years, Taylor worked cutting fish at a neighborhood market. &#34;Fishman,&#34; as friends called him, was on his way to visit his estranged wife and their children on the first night of the riots. When he stopped at a supermarket at Vermont and Vernon avenues to pick up some milk, he was shot in the parking lot along with two teenagers.</div>
+        <div><a href="http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.004453, -118.292169], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.004453, -118.292169]).addTo(map);
+    </script>
+</body>
+</html>

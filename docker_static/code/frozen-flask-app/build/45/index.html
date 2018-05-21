@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 45: Hugo G. Ramirez</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Hugo G. Ramirez, a 23 year old,
+            Latino male died on 1992-05-03
+            in a not riot-related incident at 12732 Bess St.
+            
+                in Baldwin Park.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Hugo G. Ramirez</h3>
+        <div>location (lat/lon) : -117.997106, 34.070238</div>
+        <div>date of incident : 1992-05-03</div>
+        <div>address : 12732 Bess St.</div>
+        <div>neighbourhood : Baldwin Park</div>
+        <div>cause of death : Not riot-related</div>
+        <div>Hugo Ramirez, a 23-year-old Latino, was shot and killed Sunday, May 3, 1992, in Baldwin Park. Ramirez was found face-down in the street, with a gunshot wound to the head, in the 12700 block of Bess Street.</div>
+        <div><a href="">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.070238, -117.997106], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.070238, -117.997106]).addTo(map);
+    </script>
+</body>
+</html>

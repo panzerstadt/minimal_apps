@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 50: Imad Sharaf</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Imad Sharaf, a 31 year old,
+            Black male died on 1992-05-03
+            in a not riot-related incident at San Diego Freeway &amp; San Fernando Mission Boulevard
+            
+                in Mission Hills.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Imad Sharaf</h3>
+        <div>location (lat/lon) : -118.4717452, 34.27185555</div>
+        <div>date of incident : 1992-05-03</div>
+        <div>address : San Diego Freeway &amp; San Fernando Mission Boulevard</div>
+        <div>neighbourhood : Mission Hills</div>
+        <div>cause of death : Not riot-related</div>
+        <div>Imad Sharaf&#39;s body was found the morning of Sunday, May 3, 1992, when firefighters answered a report of a brush fire near the on-ramp to the 405 Freeway at San Fernando Mission Boulevard in Mission Hills. At first, Sharaf, a Granada Hills resident who emigrated from Jordan three years ago, was listed as a riot victim. Detectives now believe that he was drugged before he was set ablaze and that the fire may have been an attempt to make the slaying appear riot-related. Police said that Sharaf, who was a photo lab technician, had been doused with a flammable substance and set afire.</div>
+        <div><a href="http://articles.latimes.com/print/1993-04-24/local/me-26740_1_slaying-victims">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.27185555, -118.4717452], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.27185555, -118.4717452]).addTo(map);
+    </script>
+</body>
+</html>

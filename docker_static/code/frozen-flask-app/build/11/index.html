@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id 11: Gregory Davis Jr.</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>
+            Gregory Davis Jr., a 15 year old,
+            Black male died on 1992-04-30
+            in a homicide incident at Vermont Avenue &amp; 43rd Street
+            
+                in Vermont Square.
+            
+        </h3>
+    </div>
+
+    <div id="map" style="width:100%; height:300px"><</div>
+
+    <div class="more-detail"><h3>Gregory Davis Jr.</h3>
+        <div>location (lat/lon) : -118.2915492, 34.005485</div>
+        <div>date of incident : 1992-04-30</div>
+        <div>address : Vermont Avenue &amp; 43rd Street</div>
+        <div>neighbourhood : Vermont Square</div>
+        <div>cause of death : Homicide</div>
+        <div>Gregory Davis Jr., a 15-year-old black teen, was fatally shot Wednesday, April 29, 1992, near the intersection of Vermont Avenue and 43rd Street in Vermont Square. He was transported by friends to County-USC Medical Center, where he died.</div>
+        <div><a href="http://articles.latimes.com/print/1992-06-21/news/mn-1558_1_police-officer">go to article</a></div>
+    </div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([34.005485, -118.2915492], 16);
+        // how does this work
+        let osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> and contributors.'
+        });
+        map.addLayer(osmLayer);
+        let marker = L.marker([34.005485, -118.2915492]).addTo(map);
+    </script>
+</body>
+</html>
